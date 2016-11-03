@@ -1,0 +1,166 @@
+\documentclass[a4paper,12pt]{jarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{amsmath}
+\usepackage{subfigure}
+\usepackage{comment}
+\usepackage{array}
+
+\setlength{\hoffset}{0cm}
+\setlength{\oddsidemargin}{-3mm}
+\setlength{\evensidemargin}{-3cm}
+\setlength{\marginparsep}{0cm}
+\setlength{\marginparwidth}{0cm}
+\setlength{\textheight}{24.7cm}
+\setlength{\textwidth}{17cm}
+\setlength{\topmargin}{-45pt}
+
+\renewcommand{\baselinestretch}{1.6}
+\renewcommand{\floatpagefraction}{1}
+\renewcommand{\topfraction}{1}
+\renewcommand{\bottomfraction}{1}
+\renewcommand{\textfraction}{0}
+\renewcommand{\labelenumi}{(\arabic{enumi})}
+%\renewcommand{\figurename}{Fig.} %図をFig.にする
+
+
+%図のキャプションからコロン：を消す
+\makeatletter
+\long\def\@makecaption#1#2{% #1=図表番号、#2=キャプション本文
+\sbox\@tempboxa{#1. #2}
+\ifdim \wd\@tempboxa >\hsize
+#1 #2\par 
+\else
+\hb@xt@\hsize{\hfil\box\@tempboxa\hfil}
+\fi}
+\makeatother
+
+\begin{document}
+%
+\title{\vspace{-30mm} \fbox{\large{制御系構成特論~レポート課題~~~機械知能工学専攻~~16344217~~津上~祐典}}}
+\date{}
+%
+\maketitle
+%
+\vspace{-30mm}
+%\parindent = 0pt %すべての段落で字下げをしない
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{\fbox{問題}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+厳密モデル$\tilde{P}(s)$，ノミナルモデル$P_n(s)$が
+%
+\begin{eqnarray}
+ \tilde{P}(s)&=&\frac{2}{(s+1)(s-2)} \\
+ P_n(s)&=&\frac{1}{s+1}
+\end{eqnarray}
+%
+で表されるとき，$\Delta N_l(s)$，$\Delta D_l(s)$，加法的不確かさ$\Delta_a(s)$，
+乗法的不確かさ$\Delta_m(s)$を求めよ．
+\vspace{-10mm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{\fbox{解答}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+加法的不確かさ$\Delta_a(s)$，厳密モデル$\tilde{P}(s)$およびノミナルモデ
+ル$P_n(s)$は以下の関係式を満たす．
+%
+\begin{equation}
+ \tilde{P}(s)=P_n(s)-\Delta_a(s)
+\end{equation}
+%
+これを式変形すると加法的不確かさ$\Delta_a(s)$
+%
+\begin{eqnarray}
+ \Delta_a(s) &=& \tilde{P}(s)-P_n(s) \nonumber \\
+  &=& \frac{2}{(s+1)(s-2)}-\frac{1}{s+1} \nonumber \\
+ &=& \frac{-s+4}{(s+1)(s-2)} 
+\end{eqnarray}
+%
+を得る．
+%
+また，乗法的不確かさ$\Delta_m(s)$，厳密モデル$\tilde{P}(s)$およびノミナ
+ルモデル$P_n(s)$は以下の関係式を満たす．
+%
+\begin{equation}
+\tilde{P}(s) = (1+\Delta_m(s))P_n(s) 
+\end{equation}
+%
+これを式変形すると乗法的不確かさ$\Delta_m(s)$
+%
+\begin{eqnarray}
+ \Delta_m(s) &=& \tilde{P}(s)P_n^{-1}(s)-1 \\
+ &=&\frac{2(s+1)}{(s+1)(s-2)}-1 \\
+ &=&\frac{-s+4}{s-2}
+\end{eqnarray}
+%
+を得る．
+
+次に，$\Delta N_l(s)$，$\Delta D_l(s)$を求める．$D_l(s),N_l(s)$の分母は
+$(s+4)$であるので，それぞれ
+%
+\begin{eqnarray}
+ D_l(s)&=&\frac{d_1}{s+4} \\
+ N_l(s)&=&\frac{n_1}{s+4}
+\end{eqnarray}
+%
+とおく．すると
+%
+\begin{eqnarray}
+ P_n(s) &=& D_l^{-1}(s)N_l(s) \\
+ \frac{1}{s+1} &=& \frac{s+4}{d}\cdot \frac{n}{s+4} 
+\end{eqnarray}
+%
+より，$d_1=s+1,n_1=1$となり
+%
+\begin{eqnarray}
+ D_l(s) &=& \frac{s+1}{s+4} \\
+ N_l(s) &=& \frac{1}{s+4}
+\end{eqnarray}
+%
+が求まる．また，$\Delta N_l(s),\Delta D_l(s)$の分母は$(s+2)(s+3)$であ
+るのでそれぞれ
+%
+\begin{eqnarray}
+ \Delta N_l &=& \frac{n_2}{(s+2)(s+3)} \\
+ \Delta D_l &=& \frac{d_2}{(s+2)(s+3)}
+\end{eqnarray}
+%
+とおく．ここで，$\Delta N_l(s),\Delta D_l(s)$は
+%
+\begin{eqnarray}
+ \Delta N_l(s) &=& \tilde{N}_l(s) -N_l(s) \label{equ:n} \\
+ \Delta D_l(s) &=& \tilde{D}_l(s) -D_l(s) \label{equ:d}
+\end{eqnarray}
+%
+で表される．(\ref{equ:n})式より，
+%
+\begin{eqnarray}
+ \frac{n_2}{(s+2)(s+3)} &=& \tilde{N}_l(s) - \frac{1}{s+4} \nonumber \\
+ \tilde{N}_l(s) &=& \frac{n_2(s+4)+(s+2)(s+3)}{(s+2)(s+3)(s+4)} 
+\end{eqnarray}
+%
+を得る．同様に（\ref{equ:d}）式より，
+%
+\begin{eqnarray}
+ \frac{d_2}{(s+2)(s+3)} &=& \tilde{D}_l(s) - \frac{s+1}{s+4} \nonumber \\
+ \tilde{D}_l(s) &=& \frac{d_2(s+4)+(s+1)(s+2)(s+3)}{(s+2)(s+3)(s+4)} 
+\end{eqnarray}
+%
+を得る．$\tilde{P}(s),\tilde{D}_l(s),\tilde{N}_l(s)$の関係式より，
+%
+\begin{eqnarray}
+ \tilde{P}(s) &=& \tilde{D}_l^{-1}(s)\tilde{N}_l(s) \\
+ \frac{2}{(s+1)(s-2)} &=&
+  \frac{(s+2)(s+3)(s+4)}{d_2(s+4)+(s+1)(s+2)(s+3)} \cdot
+  \frac{n_2(s+4)+(s+2)(s+3)}{(s+2)(s+3)(s+4)} \nonumber\\
+ &=&\frac{n_2(s+4)+(s+2)(s+3)}{d_2(s+4)+(s+1)(s+2)(s+3)}
+\end{eqnarray}
+%
+となり，
+%
+\begin{eqnarray}
+ n_2 (s+4) &=& 2-(s+2)(s+3) \\
+ d_2 (s+4) &=& (s+1)(s-2)-(s+1)(s+2)(s+3)
+\end{eqnarray}
+%
+を得る．
+\end{document}
