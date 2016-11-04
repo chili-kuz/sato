@@ -5,6 +5,9 @@
 \usepackage{comment}
 \usepackage{array}
 
+\usepackage{ascmac} %枠つき文章
+
+ 
 \setlength{\hoffset}{0cm}
 \setlength{\oddsidemargin}{-3mm}
 \setlength{\evensidemargin}{-3cm}
@@ -34,40 +37,78 @@
 \fi}
 \makeatother
 
+%auhorを右寄せに
+\makeatletter
+  \def\@maketitle{%
+  \newpage\null
+  \vskip 2em%
+  \begin{center}%
+  \let\footnote\thanks
+    {\LARGE \@title \par}%
+    \vskip 0em%titleとauthorの間隔
+  \end{center}% 追加
+    \mbox{}\hfill%% 追加
+    {\large
+      \lineskip 0.5em%
+      \begin{tabular}[t]{c}%
+        \@author
+      \end{tabular}\par}%
+    \vskip 3em%authorとdocumentの間隔
+  \begin{center}% 追加
+    {\large \@date}%
+  \end{center}%
+  \par\vskip 0.5em}
+\makeatother
+
+
 \begin{document}
 %
-\title{\vspace{-30mm} \fbox{\large{制御系構成特論~レポート課題~~~機械知能工学専攻~~16344217~~津上~祐典}}}
+\title{\vspace{-30mm} 制御系構成特論~レポート課題}
+\author{\underline{機械知能工学専攻~~16344217~~津上~祐典}}
 \date{}
 %
 \maketitle
 %
-\vspace{-30mm}
+\vspace{-25mm}
 %\parindent = 0pt %すべての段落で字下げをしない
 %
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{\fbox{問題}}
+%\section*{\fbox{問題}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-厳密モデル$\tilde{P}(s)$，ノミナルモデル$P_n(s)$が
+
+\begin{itembox}[l]{\Large{問題}}
+ 厳密モデル$\tilde{P}(s)$，ノミナルモデル$P_n(s)$が
 %
 \begin{eqnarray}
  \tilde{P}(s)&=&\frac{2}{(s+1)(s-2)} \\
  P_n(s)&=&\frac{1}{s+1}
 \end{eqnarray}
 %
-で表されるとき，$\Delta N_l(s)$，$\Delta D_l(s)$，加法的不確かさ$\Delta_a(s)$，
-乗法的不確かさ$\Delta_m(s)$を求めよ．
+で表されるとき，左既約分解的不確かさ$\Delta N_l(s)$，$\Delta D_l(s)$，加法的不確かさ$\Delta_a(s)$，
+ 乗法的不確かさ$\Delta_m(s)$を求めよ．ただし，
+%
+ \begin{eqnarray}
+N_l(s)&=&\frac{n_1}{s+4} \\
+D_l(s)&=&\frac{d_1}{s+4} \\
+  \Delta N_l(s)&=&\frac{n_2}{(s+2)(s+3)} \\
+  \Delta D_l(s)&=&\frac{d_2}{(s+2)(s+3)}
+ \end{eqnarray}
+ %
+ とする．
+\end{itembox}
+
 \vspace{-10mm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{\fbox{解答}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-加法的不確かさ$\Delta_a(s)$，厳密モデル$\tilde{P}(s)$およびノミナルモデ
-ル$P_n(s)$は以下の関係式を満たす．
+$\Delta_a(s)$，$\tilde{P}(s)$および$P_n(s)$は以下の関係式を満たす．
 %
 \begin{equation}
  \tilde{P}(s)=P_n(s)-\Delta_a(s)
 \end{equation}
 %
-これを式変形すると加法的不確かさ$\Delta_a(s)$
+これを式変形すると$\Delta_a(s)$
 %
 \begin{eqnarray}
  \Delta_a(s) &=& \tilde{P}(s)-P_n(s) \nonumber \\
@@ -77,14 +118,13 @@
 %
 を得る．
 %
-また，乗法的不確かさ$\Delta_m(s)$，厳密モデル$\tilde{P}(s)$およびノミナ
-ルモデル$P_n(s)$は以下の関係式を満たす．
+また，$\Delta_m(s)$，$\tilde{P}(s)$および$P_n(s)$は以下の関係式を満たす．
 %
 \begin{equation}
 \tilde{P}(s) = (1+\Delta_m(s))P_n(s) 
 \end{equation}
 %
-これを式変形すると乗法的不確かさ$\Delta_m(s)$
+これを式変形すると$\Delta_m(s)$
 %
 \begin{eqnarray}
  \Delta_m(s) &=& \tilde{P}(s)P_n^{-1}(s)-1 \\
@@ -162,5 +202,25 @@ $(s+4)$であるので，それぞれ
  d_2 (s+4) &=& (s+1)(s-2)-(s+1)(s+2)(s+3)
 \end{eqnarray}
 %
-を得る．
+を得る．(\ref{equ:n})式より，$\Delta N_l(s)$は
+%
+\begin{eqnarray}
+ \Delta N_l(s) &=& \tilde{N}_l(s) -N_l(s) \nonumber \\
+ &=&\frac{n_2(s+4)+(s+2)(s+3)}{(s+2)(s+3)(s+4)} - \frac{1}{s+4} \nonumber \\
+ &=&\frac{2-(s+2)(s+3)+(s+2)(s+3)}{(s+2)(s+3)(s+4)} - \frac{1}{s+4} \nonumber \\
+ &=&\frac{-(s+1)}{(s+2)(s+3)}
+\end{eqnarray}
+%
+となり，また，(\ref{equ:d})式より$\Delta D_l(s)$は，
+%
+\begin{eqnarray}
+ \Delta D_l(s) &=& \tilde{D}_l(s) -D_l(s) \nonumber\\
+  &=&\frac{d_2(s+4)+(s+1)(s+2)(s+3)}{(s+2)(s+3)(s+4)} -\frac{s+1}{s+4} \nonumber\\
+ &=& \frac{(s+1)(s-2)-(s+1)(s+2)(s+3)+(s+1)(s+2)(s+3)}{(s+2)(s+3)(s+4)}
+  -\frac{s+1}{s+4} \nonumber\\
+ &=&\frac{(s+1)(s-2)-(s+1)(s+2)(s+3)}{(s+2)(s+3)(s+4)} \nonumber\\
+ &=&\frac{-s^3-5s^2-12s-8}{(s+2)(s+3)(s+4)}
+\end{eqnarray}
+%
+となる．
 \end{document}

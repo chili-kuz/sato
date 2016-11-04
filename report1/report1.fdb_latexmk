@@ -1,9 +1,9 @@
 # Fdb version 3
-["dvipdf"] 1478157539 "report1.dvi" "report1.pdf" "report1" 1478157539
-  "report1.dvi" 1478157539 7348 9a7f3befd7905160906aec18f3102ae5 "latex"
+["dvipdf"] 1478224616 "report1.dvi" "report1.pdf" "report1" 1478224616
+  "report1.dvi" 1478224616 9580 83d6b7b28e2721bcf32aaf00f9dc4151 "latex"
   (generated)
   "report1.pdf"
-["latex"] 1478157539 "report1.tex" "report1.dvi" "report1" 1478157539
+["latex"] 1478224616 "report1.tex" "report1.dvi" "report1" 1478224616
   "/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/infwarerr.sty" 1335995445 8253 3bdedc8409aa5d290a2339be6f09af03 ""
   "/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/ltxcmds.sty" 1335995445 18425 775b341047ce304520cc7c11ca41392e ""
   "/usr/local/texlive/2015/texmf-dist/tex/latex/amsmath/amsbsy.sty" 1456875012 2210 5c54ab129b848a5071554186d0168766 ""
@@ -21,11 +21,13 @@
   "/usr/local/texlive/2015/texmf-dist/tex/latex/subfigure/subfigure.cfg" 1167176009 2062 a0e7d66e09e508f51289a656aec06ed2 ""
   "/usr/local/texlive/2015/texmf-dist/tex/latex/subfigure/subfigure.sty" 1167176009 15188 91281c7ddbccfa54a8e0c3b56ab5aa72 ""
   "/usr/local/texlive/2015/texmf-dist/tex/latex/tools/array.sty" 1459635588 12398 bd782945c489f84ff012bcea4a712d25 ""
+  "/usr/local/texlive/2015/texmf-dist/tex/platex/base/ascmac.sty" 1274206740 20 10f4cf8513664bb881c9d65607787817 ""
   "/usr/local/texlive/2015/texmf-dist/tex/platex/base/jarticle.cls" 1274206740 25507 0e6187042be739768097a38c29341b37 ""
   "/usr/local/texlive/2015/texmf-dist/tex/platex/base/jsize12.clo" 1274206740 9598 fa730555eee77484e4f33073895956b9 ""
-  "report1.aux" 1478157539 60 90534e12f1b568e2a62f44e352662bf6 ""
-  "report1.tex" 1478157538 4481 8620338469e93c9c6cf77884ac2ed5eb ""
+  "/usr/local/texlive/2015/texmf-dist/tex/platex/base/tascmac.sty" 1274206740 7559 d5501d5a4108bee88fae069c40104877 ""
+  "report1.aux" 1478224616 60 1f6956a3ccc50493a0fb344a30f65950 ""
+  "report1.tex" 1478224615 5934 d60604ca502e4df67881678daf125c28 ""
   (generated)
+  "report1.aux"
   "report1.dvi"
   "report1.log"
-  "report1.aux"
