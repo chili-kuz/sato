@@ -1,0 +1,159 @@
+\documentclass[a4paper,12pt]{jarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{amsmath}
+\usepackage{subfigure}
+\usepackage{comment}
+\usepackage{array}
+
+\usepackage{ascmac} %枠つき文章
+
+ 
+\setlength{\hoffset}{0cm}
+\setlength{\oddsidemargin}{-3mm}
+\setlength{\evensidemargin}{-3cm}
+\setlength{\marginparsep}{0cm}
+\setlength{\marginparwidth}{0cm}
+\setlength{\textheight}{24.7cm}
+\setlength{\textwidth}{17cm}
+\setlength{\topmargin}{-45pt}
+
+\renewcommand{\baselinestretch}{1.6}
+\renewcommand{\floatpagefraction}{1}
+\renewcommand{\topfraction}{1}
+\renewcommand{\bottomfraction}{1}
+\renewcommand{\textfraction}{0}
+\renewcommand{\labelenumi}{(\arabic{enumi})}
+%\renewcommand{\figurename}{Fig.} %図をFig.にする
+
+
+%図のキャプションからコロン：を消す
+\makeatletter
+\long\def\@makecaption#1#2{% #1=図表番号、#2=キャプション本文
+\sbox\@tempboxa{#1. #2}
+\ifdim \wd\@tempboxa >\hsize
+#1 #2\par 
+\else
+\hb@xt@\hsize{\hfil\box\@tempboxa\hfil}
+\fi}
+\makeatother
+
+%auhorを右寄せに
+\makeatletter
+  \def\@maketitle{%
+  \newpage\null
+  \vskip 2em%
+  \begin{center}%
+  \let\footnote\thanks
+    {\LARGE \@title \par}%
+    \vskip 0em%titleとauthorの間隔
+  \end{center}% 追加
+    \mbox{}\hfill%% 追加
+    {\large
+      \lineskip 0.5em%
+      \begin{tabular}[t]{c}%
+        \@author
+      \end{tabular}\par}%
+    \vskip 3em%authorとdocumentの間隔
+  \begin{center}% 追加
+    {\large \@date}%
+  \end{center}%
+  \par\vskip 0.5em}
+\makeatother
+
+
+\begin{document}
+%
+\title{\vspace{-30mm} 制御系構成特論~レポート課題2}
+\author{\underline{機械知能工学専攻~~16344217~~津上~祐典}}
+\date{}
+%
+\maketitle
+%
+\vspace{-25mm}
+%\parindent = 0pt %すべての段落で字下げをしない
+%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\section*{\fbox{問題}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{itembox}[l]{\Large{問題}}
+問1.~以下のシステム方程式を相似変換し，伝達関数を導出せよ．
+  \begin{eqnarray}
+   \dot{x}(t)&=&Ax(t)+Bu(t) \\
+   y(t)&=&Cx(t)+Du(t)
+  \end{eqnarray}
+
+問2.~伝達関数$G(s)$が
+\begin{equation}
+ G(s)=\frac{s-a}{(s-a)^2+b^2}
+  =\left[
+  \begin{array}{rc|r}
+  a  & b & 1 \\
+   -b & a & 0 \\ \hline
+   1  & 0 & 0
+  \end{array}
+  \right]
+\end{equation}
+で表され，$x(0)=[0~-\frac{1}{b}]$のとき，入力$u(t)=e^{at}$に対する応答
+$y(t)$を求めよ．
+ 
+問3.
+ \begin{equation}
+ G_1=\frac{s-1}{s+1}~,~G_2=\frac{1}{s-1}
+ \end{equation}
+ の場合について，直列，並列結合を求め，結合後のシステムの可制御・可観測性
+ を調べよ．また，それぞれにおいて，結合後の伝達関数を求めよ．さらに，
+ \begin{equation}
+  G_1'=G_2'=\frac{1}{s-1}  
+ \end{equation}
+ のときの系列結合と可制御・可観測性を調べよ．
+\end{itembox}
+
+\vspace{-10mm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{\fbox{解答}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+問1.
+$z(t)=Tx(t)$（ただし，$T$は正則行列）とおくと与式はそれぞれ
+\begin{eqnarray}
+ T^{-1}\dot{z}(t)&=&AT^{-1} z(t)+Bu(t) \nonumber\\
+ \iff \dot{z}(t)&=&TAT^{-1}z(t)+TBu(t)\\
+ y(t)&=&CT^{-1}z(t)+Du(t)
+\end{eqnarray}
+となる．初期値を零としラプラス変換すると
+\begin{eqnarray}
+ sZ(s)&=&TAT^{-1}Z(s)+TBU(s) \nonumber\\
+ Z(s)&=&(sI-TAT^{-1})^{-1}TBU(s)
+\end{eqnarray}
+また，
+\begin{equation}
+ Y(s)=CT^{-1}Z(s)+DU(s)
+\end{equation}
+となる．ただし，$Y(s)=\mathcal{L}[(t)]~,~U(s)=\mathcal{L}[u(t)]$である．
+代入すると，
+%
+\begin{equation}
+ Y(s)=\left\{CT^{-1}(sI-TAT^{-1})^{-1}TB+D\right\}U(s)
+\end{equation}
+%
+となる．これより伝達関数$G(s)$は
+%
+\begin{eqnarray}
+ G(s)&=&\frac{Y(s)}{U(s)} \nonumber\\
+ &=&CT^{-1}(sI-TAT^{-1})^{-1}TB+D \nonumber\\
+ &=&CT^{-1}\left\{T(sI-A)T^{-1}\right\}^{-1}TB+D \nonumber\\
+ &=&CT^{-1}T(sI-A)^{-1}T^{-1}TB+D \nonumber\\
+ &=&C(sI-A)^{-1}B+D
+\end{eqnarray}
+%
+となる．
+
+問2.
+
+
+問3.
+
+
+
+
+\end{document}
