@@ -1,9 +1,9 @@
 # Fdb version 3
-["dvipdf"] 1479263107 "report2.dvi" "report2.pdf" "report2" 1479263107
-  "report2.dvi" 1479263107 14092 afe7b9f69d5015c821a64cecf483657a "latex"
+["dvipdf"] 1479268377 "report2.dvi" "report2.pdf" "report2" 1479268377
+  "report2.dvi" 1479268377 16720 f5a7eb9bd3e186c37b6a5313b8538815 "latex"
   (generated)
   "report2.pdf"
-["latex"] 1479263107 "report2.tex" "report2.dvi" "report2" 1479263107
+["latex"] 1479268377 "report2.tex" "report2.dvi" "report2" 1479268377
   "/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/infwarerr.sty" 1335995445 8253 3bdedc8409aa5d290a2339be6f09af03 ""
   "/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/ltxcmds.sty" 1335995445 18425 775b341047ce304520cc7c11ca41392e ""
   "/usr/local/texlive/2015/texmf-dist/tex/latex/amsmath/amsbsy.sty" 1456875012 2210 5c54ab129b848a5071554186d0168766 ""
@@ -26,8 +26,8 @@
   "/usr/local/texlive/2015/texmf-dist/tex/platex/base/jsize12.clo" 1274206740 9598 fa730555eee77484e4f33073895956b9 ""
   "/usr/local/texlive/2015/texmf-dist/tex/platex/base/tascmac.sty" 1274206740 7559 d5501d5a4108bee88fae069c40104877 ""
   "fig/burokku.eps" 1479190786 28301 6fdb8cf72195224fc587f0fcb87ea1c4 ""
-  "report2.aux" 1479263107 130 1147ed69440235a83e171926bb7eca43 ""
-  "report2.tex" 1479263106 8807 f8706a5555fdc39b456a9cee43aed5ea ""
+  "report2.aux" 1479268377 184 1cac69a8aa357c213e4ccf681406dc1c ""
+  "report2.tex" 1479268376 10315 056c7e1d210747d4592ed57896497641 ""
   (generated)
   "report2.log"
   "report2.dvi"
