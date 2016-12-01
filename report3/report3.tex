@@ -1,0 +1,356 @@
+\documentclass[a4paper,12pt]{jarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{amsmath}
+\usepackage{subfigure}
+\usepackage{comment}
+\usepackage{array}
+
+\usepackage{ascmac} %枠つき文章
+
+ 
+\setlength{\hoffset}{0cm}
+\setlength{\oddsidemargin}{-3mm}
+\setlength{\evensidemargin}{-3cm}
+\setlength{\marginparsep}{0cm}
+\setlength{\marginparwidth}{0cm}
+\setlength{\textheight}{24.7cm}
+\setlength{\textwidth}{17cm}
+\setlength{\topmargin}{-45pt}
+
+\renewcommand{\baselinestretch}{1.6}
+\renewcommand{\floatpagefraction}{1}
+\renewcommand{\topfraction}{1}
+\renewcommand{\bottomfraction}{1}
+\renewcommand{\textfraction}{0}
+\renewcommand{\labelenumi}{(\arabic{enumi})}
+%\renewcommand{\figurename}{Fig.} %図をFig.にする
+
+
+%図のキャプションからコロン：を消す
+\makeatletter
+\long\def\@makecaption#1#2{% #1=図表番号、#2=キャプション本文
+\sbox\@tempboxa{#1. #2}
+\ifdim \wd\@tempboxa >\hsize
+#1 #2\par 
+\else
+\hb@xt@\hsize{\hfil\box\@tempboxa\hfil}
+\fi}
+\makeatother
+
+%auhorを右寄せに
+\makeatletter
+  \def\@maketitle{%
+  \newpage\null
+  \vskip 2em%
+  \begin{center}%
+  \let\footnote\thanks
+    {\LARGE \@title \par}%
+    \vskip 0em%titleとauthorの間隔
+  \end{center}% 追加
+    \mbox{}\hfill%% 追加
+    {\large
+      \lineskip 0.5em%
+      \begin{tabular}[t]{c}%
+        \@author
+      \end{tabular}\par}%
+    \vskip 3em%authorとdocumentの間隔
+  \begin{center}% 追加
+    {\large \@date}%
+  \end{center}%
+  \par\vskip 0.5em}
+\makeatother
+
+
+\begin{document}
+%
+\title{\vspace{-30mm} 制御系構成特論~レポート課題3}
+\author{\underline{機械知能工学専攻~~16344217~~津上~祐典}}
+\date{}
+%
+\maketitle
+%
+\vspace{-25mm}
+%\parindent = 0pt %すべての段落で字下げをしない
+%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\section*{\fbox{問題}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{itembox}[l]{\Large{課題1.}}
+%
+ \begin{equation}
+P(s)=\frac{1}{s-1}
+ \end{equation}
+%
+ のとき，また
+%
+\begin{eqnarray}
+ N_r=N_l=\frac{1}{s+1} \\
+ D_r=D_l=\frac{s-1}{s+1}
+\end{eqnarray}
+%
+であるとき，ベズー等式の一般解を求めよ．
+\end{itembox}
+
+\vspace{-10mm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{\fbox{解答}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+べズーの等式は
+%
+\begin{eqnarray}
+ X_rN_r+Y_rD_r=I_m\\
+ N_lX_l+D_lY_l=I_p
+\end{eqnarray}
+%
+で表される．$N_r,~N_l,~D_r,~D_l$を代入すると，
+%
+\begin{eqnarray}
+ X_r\cdot\frac{1}{s+1}+Y_r\cdot\frac{s-1}{s+1}=1\\
+ X_l\cdot\frac{1}{s+1}+Y_l\cdot\frac{s-1}{s+1}=1
+\end{eqnarray}
+%
+となり，
+%
+\begin{eqnarray}
+ X_r=X_l=2\\
+ Y_r=Y_l=1
+\end{eqnarray}
+%
+を得る．これよりベズー等式を満足する解
+$\bar{X_r},\bar{Y_r},\bar{X_l},\bar{Y_l}$を
+%
+\begin{eqnarray}
+ \bar{X_r}&=&\bar{X_l}=2=\frac{2s+4}{s+2} \\
+ \bar{Y_r}&=&\bar{Y_l}=1=\frac{s+2}{s+2}
+\end{eqnarray}
+%
+とおく．また，自由パラメータ$Q,R$を
+%
+\begin{eqnarray}
+ Q=R=-\frac{s+1}{s+2}
+\end{eqnarray}
+%
+とするとベズー等式の一般解は，それぞれ
+%
+\begin{eqnarray}
+ X_r&=&\bar{X_r}+QD_l \nonumber\\
+ &=&\frac{2s+4}{s+2}-\left(\frac{s+1}{s+2}\right)\frac{s-1}{s+1} \nonumber\\
+ &=&\frac{s+5}{s+2}
+\end{eqnarray}
+%
+%
+\begin{eqnarray}
+ Y_r&=&\bar{Y_r}-QN_l \nonumber\\
+ &=&\frac{s+2}{s+2}+\left(\frac{s+1}{s+2}\right)\frac{1}{s+1} \nonumber\\
+ &=&\frac{s+3}{s+2}
+\end{eqnarray}
+%
+%
+\begin{eqnarray}
+ X_l&=&\bar{X_l}+D_rR \nonumber\\
+ &=&\frac{2s+4}{s+2}+\frac{s-1}{s+1}\cdot\left(-\frac{s+1}{s+2}\right) \nonumber\\
+ &=&\frac{s+5}{s+2}
+\end{eqnarray}
+%
+%
+\begin{eqnarray}
+ Y_l&=&\bar{Y_l}-N_rR \nonumber\\
+ &=&\frac{s+2}{s+2}+\frac{1}{s+1}\left(\frac{s+1}{s+2}\right) \nonumber\\
+ &=&\frac{s+3}{s+2}
+\end{eqnarray}
+%
+となる．
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{itembox}[l]{\Large{課題2.}}
+%
+ \begin{equation}
+ P(s)=\frac{1}{s-1}=[1,1,1,0]
+ \end{equation}
+ %
+ において，$H=F=2$としたときの2重既約分解表現を求めよ．
+\end{itembox}
+
+\vspace{-10mm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{\fbox{解答}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+$P(s)$をドイルの記法で表現すると，
+%
+\begin{equation}
+ P(s)=\frac{1}{s-1}=
+\left[
+  \begin{array}{c|c}
+   1 ~&~ 1  \\ \hline
+   1 ~&~ 0   \\ 
+  \end{array}
+  \right]
+=
+\left[
+  \begin{array}{c|c}
+   A ~&~ B  \\ \hline
+   C ~&~ D   \\ 
+  \end{array}
+  \right]
+\end{equation}
+%
+となる．ここで
+%
+\begin{eqnarray}
+ A_H&=&A-HC=1-2\cdot1=-1\\
+ A_F&=&A-BF=1-1\cdot2=-1\\
+ B_H&=&B-HD=1-2\cdot0=1\\
+ C_F&=&C-DF=1-0\cdot2=1
+\end{eqnarray}
+%
+であるから二重既約分解表現すると
+%
+\begin{eqnarray}
+\left[
+  \begin{array}{c|c}
+   Y_r ~&~ X_r  \\ \hline
+   -N_l &~ D_l   
+  \end{array}
+\right]
+=
+\left[
+  \begin{array}{c|cc}
+  A_H & B_H  & H  \\ \hline
+  F   &  I_m & 0  \\
+  -C  & -D   & I_p
+  \end{array}
+\right]
+=
+\left[
+  \begin{array}{c|cc}
+  -1  ~&~ 1 ~& 2  \\ \hline
+  -2  ~&~ 1 ~& 0  \\
+  -1  ~&~ 0 ~& 1
+  \end{array}
+  \right]
+\\
+\left[
+  \begin{array}{c|c}
+   D_r ~& -X_l  \\ \hline
+   N_r ~& Y_l   
+  \end{array}
+\right]
+=
+\left[
+  \begin{array}{c|cc}
+  A_F & B    & H  \\ \hline
+  -F  &  I_m & 0  \\
+  C_F & -D   & I_p
+  \end{array}
+\right]
+=
+\left[
+  \begin{array}{c|cc}
+  -1  ~&~ 1 ~& 2  \\ \hline
+  -2  ~&~ 1 ~& 0  \\
+   1  ~&~ 0 ~& 1
+  \end{array}
+  \right]
+\end{eqnarray}
+となる．
+%
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ \begin{itembox}[l]{\Large{課題3.}}
+%
+  \begin{equation}
+   P(s)=\frac{1}{s-1}=[1,1,1,0]=\left[
+  \begin{array}{c|c}
+   1 ~&~ 1  \\ \hline
+   1 ~&~ 0   \\ 
+  \end{array}
+  \right]
+  \end{equation}
+%
+において，正規化右・左既約分解表現を求めよ．  
+ \end{itembox}
+\vspace{-10mm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{\fbox{解答}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+はじめにリッカチ方程式を解くと
+%
+ \begin{eqnarray}
+  X(A-BR^{-1}D^{\mathrm{T}}C)+(A-BR^{-1}D^{\mathrm{T}}C)^{\mathrm{T}}X-XBR^{-1}B^{\mathrm{T}}X+C^{\mathrm{T}}\tilde{R}^{-1}C=0\\
+ X(1-1\cdot1\cdot0\cdot1)+(1-1\cdot1\cdot0\cdot1)X-X\cdot1\cdot1\cdot1\cdot
+  X+1\cdot1\cdot1=0\\
+  -X^2+2X+1=0
+\end{eqnarray}
+%
+$X>0$より解は$X=1+\sqrt{2}$となる．また，$Y$に関するリッカチ方程式は
+%
+ \begin{eqnarray}
+(A-BD^{\mathrm{T}}\tilde{R}^{-1}C)Y+Y(A-BD^{\mathrm{T}}\tilde{R}^{-1}C)^{\mathrm{T}}-YC^{\mathrm{T}}\tilde{R}^{-1}CY+BR^{-1}B^{\mathrm{T}}=0\\
+ (1-1\cdot0\cdot1\cdot1)Y+Y(1-1\cdot0\cdot1\cdot1)-Y\cdot1\cdot1\cdot1\cdot
+  Y+1\cdot1\cdot1=0\\
+  -Y^2+2Y+1=0
+\end{eqnarray}
+%
+となり，解は$Y>0$より，$Y=1+\sqrt{2}$となる．
+%
+得られた$X,Y$より，
+%
+\begin{eqnarray}
+ F&=&R^{-1}(D^{\mathrm{T}}C+B^{\mathrm{T}}X)=1(0\cdot1+1\cdot X)=1+\sqrt{2}\\
+ H&=&(BD^{\mathrm{T}}+YC^{\mathrm{T}})\tilde{R}^{-1}=(1\cdot0+Y\cdot1)=1+\sqrt{2} \\
+ A_F&=&A-BF=1-1-\sqrt{2}=1-\sqrt{2}\\
+ A_H&=&A-HC=1-1-\sqrt{2}=1-\sqrt{2}\\
+ C_F&=&C+DF=1\\
+ B_H&=&B+DH=1
+\end{eqnarray}
+%
+が求まり正規化右，左規約分解表現はそれぞれ，
+%
+\begin{eqnarray}
+ \left[
+  \begin{array}{c}
+   D_r  \\ 
+   N_r   \\ 
+  \end{array}
+\right]
+&=&
+\left[
+  \begin{array}{c|c}
+   A_F & BR^{-1/2}  \\ \hline
+  -F   & R^{-1/2}   \\
+  C_F  & DR^{-1/2} \\
+  \end{array}
+\right]
+=
+\left[
+  \begin{array}{c|c}
+   1-\sqrt{2} &~ 1  \\ \hline
+  -1-\sqrt{2} &~ 1   \\
+  1           &~0 \\ 
+  \end{array}
+\right]\\
+ \left[
+  \begin{array}{c}
+   D_l  \\ 
+   N_l   \\ 
+  \end{array}
+\right]
+&=&
+\left[
+  \begin{array}{c|cc}
+   A_H             & B_H               &-H \\ \hline
+  \tilde{R}^{-1/2}C& \tilde{R}^{-1/2}D~& \tilde{R}^{-1/2} \\ 
+  \end{array}
+  \right]
+=
+\left[
+  \begin{array}{c|cc}
+   1-\sqrt{2} &~ 1 ~&-1-\sqrt{2} \\ \hline
+  1           &~ 0 ~& 1 \\ 
+  \end{array}
+  \right]
+\end{eqnarray}
+となる．
+%
+\end{document}
