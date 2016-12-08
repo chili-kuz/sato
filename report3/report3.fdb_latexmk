@@ -1,9 +1,9 @@
 # Fdb version 3
-["dvipdf"] 1480935972 "report3.dvi" "report3.pdf" "report3" 1480935973
-  "report3.dvi" 1480935972 13692 cc4e439e0e46afd7604521039c23ddfd "latex"
+["dvipdf"] 1481184848 "report3.dvi" "report3.pdf" "report3" 1481184849
+  "report3.dvi" 1481184848 13640 3805e5a6325693ca54480f0932554158 "latex"
   (generated)
   "report3.pdf"
-["latex"] 1480935971 "report3.tex" "report3.dvi" "report3" 1480935973
+["latex"] 1481184848 "report3.tex" "report3.dvi" "report3" 1481184849
   "/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/infwarerr.sty" 1335995445 8253 3bdedc8409aa5d290a2339be6f09af03 ""
   "/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/ltxcmds.sty" 1335995445 18425 775b341047ce304520cc7c11ca41392e ""
   "/usr/local/texlive/2015/texmf-dist/tex/latex/amsmath/amsbsy.sty" 1456875012 2210 5c54ab129b848a5071554186d0168766 ""
@@ -25,9 +25,9 @@
   "/usr/local/texlive/2015/texmf-dist/tex/platex/base/jarticle.cls" 1274206740 25507 0e6187042be739768097a38c29341b37 ""
   "/usr/local/texlive/2015/texmf-dist/tex/platex/base/jsize12.clo" 1274206740 9598 fa730555eee77484e4f33073895956b9 ""
   "/usr/local/texlive/2015/texmf-dist/tex/platex/base/tascmac.sty" 1274206740 7559 d5501d5a4108bee88fae069c40104877 ""
-  "report3.aux" 1480935972 8 a94a2480d3289e625eea47cd1b285758 ""
-  "report3.tex" 1480935969 7578 ea72ae03f612568d348a6df9f23870ff ""
+  "report3.aux" 1481184848 8 a94a2480d3289e625eea47cd1b285758 ""
+  "report3.tex" 1481184847 7573 300bfa137341419a3088be0b1288b201 ""
   (generated)
+  "report3.dvi"
   "report3.aux"
   "report3.log"
-  "report3.dvi"
